@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+  <meta charset="utf-8">
+  <title>Basic Patient Search</title>
+  <link rel="stylesheet" href="assets/css/app.css">
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  <script src="//builds.emberjs.com/tags/v2.12.0/ember-template-compiler.js"></script>
+  <script src="//builds.emberjs.com/tags/v2.12.0/ember.debug.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script src="assets/picture/1.gif"></script>
+  <script src="assets/js/web.js"></script>
+  
+  <!-- Bootstrap -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  
+  
+ <!-- Search script -->
+  <script type="text/x-handlebars">
+  		<h1 style="padding: 100px 25px; text-align: center;"> Patient Search Application</h1>
+        {{outlet}}
+  </script> 
+  
+  
+  <script type="text/x-handlebars" data-template-name="index"  >
+   <p style="padding: 100px 25px; text-align: center;"> Please use One Name of Mary TestPerson, Joe TestPerson and Sam TestPerson or One title of Patient Note, Clinical Note and Summary to test for case-insensitive! For eample: You can put pATienT Note, CliNIcal note, suMMary, maRy tEStpeRson, joe tEstpErSOn and sAm tEstPErsOn in Search Bar.</p> 
+   <h1 style="ext-align: center; ">
+    	{{input value=searchText placeholder="Please search here by putting a title or name" key-press="doSearch" size="48" class="form-control"}} 
+   </h1><hr/>
+
+    {{#if searchText}}
+        {{#each results as |patient|}}
+            <div>        
+                <center><h2>{{patient.name}}</h2></center>
+        {{#each patient.documents as |document|}}
+            <div>
+                <center><h3>{{document.title}}</h3></center>
+                <center><h5><div>{{document.date}}</div></h5></center>
+                <center><p><pre>{{document.contents}}</pre></p></center>
+            </div>
+        {{/each}}
+			</div>
+                 
+        {{else}}
+            <div class="message" style="ext-align:'center'; font-family:Montserrat, sans-serif" align="center">
+            	<h5>Sorry, No search results for {{searchText}}</h5>
+            </div>
+        {{/each}}
+        {{else}}
+            <div class="message" style="font-family:Montserrat, sans-serif" align="center">
+                <h5>Please enter a search above.</h5>
+            </div>
+
+   {{/if}}
+  </script>  
+
+</head>
+ 
+ 
+  
+<body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60" style="background-color:#ffffcc;">
+
+	<!-- Navigation (About Section) -->
+		<nav class="navbar navbar-default navbar-fixed-top" style="background-color:black;">
+		  <div class="container" style="background-color:black;">
+		    <div class="navbar-header">
+		      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+		        <span class="icon-bar"></span>
+		        <span class="icon-bar"></span>
+		        <span class="icon-bar"></span>                        
+		      </button>
+		      <a class="navbar-brand" href="#myPage">Logo</a>
+		    </div>
+		    
+		    <div class="collapse navbar-collapse" id="myNavbar">
+		      <ul class="nav navbar-nav navbar-right">
+		        <li><a href="#about">ABOUT</a></li>
+		        <li><a href="#services">SERVICES</a></li>
+		        <li><a href="#portfolio">PORTFOLIO</a></li>
+		      </ul>
+		    </div>
+		  </div>
+		</nav>
+
+
+<img src="assets/picture/1.gif"   alt="Responsive image" style="height:500px;margin-left:-60px"/>  
+
+
+<!-- Container (About Section) -->
+     <div id="about" class="container-fluid">
+		  <div class="row">
+		    <div class="col-sm-8">
+		      <h2>About Company Page</h2><br>
+		      <h4>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</h4><br>
+		      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+		     </div>
+		     
+		    <div class="col-sm-4">
+		      <span class="glyphicon glyphicon-signal logo"></span>
+		    </div>
+		  </div>
+     </div>
+
+	<div class="container-fluid bg-grey">
+		  <div class="row">
+		    <div class="col-sm-4">
+		      <span class="glyphicon glyphicon-globe logo slideanim"></span>
+		    </div>
+		    
+		    <div class="col-sm-8">
+		      <h2>Our Values</h2><br>
+		      <h4><strong>MISSION:</strong> Our mission lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</h4><br>
+		      <p><strong>VISION:</strong> Our vision Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+		      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+		    </div>
+		  </div>
+	</div>
+
+<!-- Container (Services Section) -->
+	<div id="services" class="container-fluid text-center">
+	  <h2>SERVICES</h2>
+	  <h4>What we offer</h4>
+	  <br>
+	  
+	  <div class="row slideanim">
+	    <div class="col-sm-4">
+	      <span class="glyphicon glyphicon-off logo-small"></span>
+	      <h4>POWER</h4>
+	      <p>Lorem ipsum dolor sit amet..</p>
+	    </div>
+	    
+	    <div class="col-sm-4">
+	      <span class="glyphicon glyphicon-heart logo-small"></span>
+	      <h4>LOVE</h4>
+	      <p>Lorem ipsum dolor sit amet..</p>
+	    </div>
+	    
+	    <div class="col-sm-4">
+	      <span class="glyphicon glyphicon-lock logo-small"></span>
+	      <h4>JOB DONE</h4>
+	      <p>Lorem ipsum dolor sit amet..</p>
+	    </div>
+	    
+	  </div>
+	  <br><br>
+	  
+	  <div class="row slideanim">
+	    <div class="col-sm-4">
+	      <span class="glyphicon glyphicon-leaf logo-small"></span>
+	      <h4>GREEN</h4>
+	      <p>Lorem ipsum dolor sit amet..</p>
+	    </div>
+	    
+	    <div class="col-sm-4">
+	      <span class="glyphicon glyphicon-certificate logo-small"></span>
+	      <h4>CERTIFIED</h4>
+	      <p>Lorem ipsum dolor sit amet..</p>
+	    </div>
+	    
+	    <div class="col-sm-4">
+	      <span class="glyphicon glyphicon-wrench logo-small"></span>
+	      <h4 style="color:#303030;">HARD WORK</h4>
+	      <p>Lorem ipsum dolor sit amet..</p>
+	    </div>
+	    
+	  </div>
+	</div>
+
+
+
+
+</body>
+</html>
